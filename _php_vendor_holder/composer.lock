@@ -1,11 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "16dbed55e5efbec30eacbecbb5c1e1f0",
-    "content-hash": "42216736dd214e3c7e48a3fa35b25c8a",
+    "content-hash": "2797786bdfb46e76c6e0455189043069",
     "packages": [
         {
             "name": "google/recaptcha",
@@ -50,7 +49,7 @@
                 "recaptcha",
                 "spam"
             ],
-            "time": "2015-09-02 17:23:59"
+            "time": "2015-09-02T17:23:59+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -112,7 +111,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2016-10-08 15:01:37"
+            "time": "2016-10-08T15:01:37+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -163,7 +162,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2016-11-18 17:47:58"
+            "time": "2016-11-18T17:47:58+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -221,7 +220,7 @@
                 "stream",
                 "uri"
             ],
-            "time": "2016-06-24 23:00:38"
+            "time": "2016-06-24T23:00:38+00:00"
         },
         {
             "name": "ircmaxell/random-lib",
@@ -276,7 +275,7 @@
                 "random-numbers",
                 "random-strings"
             ],
-            "time": "2016-09-07 15:52:06"
+            "time": "2016-09-07T15:52:06+00:00"
         },
         {
             "name": "ircmaxell/security-lib",
@@ -322,19 +321,19 @@
             ],
             "description": "A Base Security Library",
             "homepage": "https://github.com/ircmaxell/SecurityLib",
-            "time": "2015-03-20 14:31:23"
+            "time": "2015-03-20T14:31:23+00:00"
         },
         {
             "name": "joshcam/mysqli-database-class",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/joshcam/PHP-MySQLi-Database-Class.git",
+                "url": "https://github.com/ThingEngineer/PHP-MySQLi-Database-Class.git",
                 "reference": "0595c669e6883adaad1b3285b166fd9f58fd6acd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joshcam/PHP-MySQLi-Database-Class/zipball/0595c669e6883adaad1b3285b166fd9f58fd6acd",
+                "url": "https://api.github.com/repos/ThingEngineer/PHP-MySQLi-Database-Class/zipball/0595c669e6883adaad1b3285b166fd9f58fd6acd",
                 "reference": "0595c669e6883adaad1b3285b166fd9f58fd6acd",
                 "shasum": ""
             },
@@ -350,13 +349,13 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL-3.0"
+                "GPL-3.0-or-later"
             ],
             "authors": [
                 {
                     "name": "Josh Campbell",
                     "email": "josh.lee.campbell@gmail.com",
-                    "homepage": "https://github.com/joshcam",
+                    "homepage": "https://github.com/thingengineer",
                     "role": "Developer"
                 },
                 {
@@ -367,7 +366,7 @@
                 }
             ],
             "description": "PHP MySQL Wrapper and object mapper which utilizes MySQLi and prepared statements",
-            "time": "2016-11-18 16:16:21"
+            "time": "2016-11-18T16:16:21+00:00"
         },
         {
             "name": "league/oauth2-client",
@@ -430,7 +429,7 @@
                 "oauth2",
                 "single sign on"
             ],
-            "time": "2016-07-28 13:20:43"
+            "time": "2016-07-28T13:20:43+00:00"
         },
         {
             "name": "phpmailer/phpmailer",
@@ -490,7 +489,7 @@
                 }
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2016-06-06 09:09:37"
+            "time": "2016-06-06T09:09:37+00:00"
         },
         {
             "name": "psr/http-message",
@@ -540,24 +539,24 @@
                 "request",
                 "response"
             ],
-            "time": "2016-08-06 14:39:51"
+            "time": "2016-08-06T14:39:51+00:00"
         },
         {
             "name": "verot/class.upload.php",
-            "version": "0.33",
+            "version": "2.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/verot/class.upload.php.git",
-                "reference": "79125bcdcd17fda24ce7ff681f2066ae42097ec7"
+                "reference": "bec90d3c3a1e60f9bf066c0595c90a3dc9c143e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verot/class.upload.php/zipball/79125bcdcd17fda24ce7ff681f2066ae42097ec7",
-                "reference": "79125bcdcd17fda24ce7ff681f2066ae42097ec7",
+                "url": "https://api.github.com/repos/verot/class.upload.php/zipball/bec90d3c3a1e60f9bf066c0595c90a3dc9c143e0",
+                "reference": "bec90d3c3a1e60f9bf066c0595c90a3dc9c143e0",
                 "shasum": ""
             },
             "require": {
-                "php": ">=4"
+                "php": ">=5.3"
             },
             "type": "library",
             "autoload": {
@@ -567,7 +566,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPLv2"
+                "GPL-2.0-only"
             ],
             "authors": [
                 {
@@ -581,7 +580,7 @@
                 "gd",
                 "upload"
             ],
-            "time": "2016-07-16 19:59:53"
+            "time": "2020-01-12T21:16:22+00:00"
         }
     ],
     "packages-dev": [],

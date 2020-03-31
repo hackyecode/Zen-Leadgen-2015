@@ -1,0 +1,14 @@
+<?php $domain_name = str_replace("www.", "", $_SERVER['SERVER_NAME']); ?>
+<footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 center-block">
+                        <ul class="text-center">
+                            <li><span class="text-uppercase"><?php echo $domain_name; ?></span> &copy; <span id="year"></span> <script> var date = new Date(); var get_year = date.getFullYear(); document.getElementById("year").innerHTML = get_year; </script></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    {{>footer_std}}
+    {{>form_modal}}

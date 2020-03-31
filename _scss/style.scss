@@ -1,0 +1,607 @@
+	//  Theme made my Mobiuszero. 
+//  bulid version 0.5.5
+//  
+// -------------------------
+// 	Table of contents
+// 	-----------------
+//  i. imports
+// 	ii. variables
+// 		- Background
+// 		- Font Family 
+// 		- Font Colors
+// 		- Bullet Icons And Colors
+//  iii. functions
+//  iv. Miscellaneous
+// 	Font 
+// 	Layout
+// 	Unordered & Ordered Lists
+//  Footer
+//  Modal
+//  Title Section 
+//  Content Section
+//  Webinar
+//  
+// ----------------------------
+// i. imports
+// ************************
+/*-------------------------------------------------*/
+// @import "bourbon"; //multipurpose functions
+@import "bootstrap";
+@import "font-awesome";
+@import "web-fonts"; // Used with google fonts 
+@include web-fonts("Oswald", ("Roboto": ("400","700")));
+@import "sass_mq"; //media queries function call
+// @import "jshare";
+// ii. variables 
+// ************************
+// - Background
+	$base_bgcolor: #212121; 
+	$secondary_bgcolor: #ffffff;
+	$image_titlebg: url('https://daks2k3a4ib2z.cloudfront.net/58e7b4be4932930214297ac1/58e7c816493293021429814c_pexels-photo-251287.png');
+	$title_bgcolor: #212121;
+	$title-image-overlay: rgba(50,50,50,0.45);
+// - Font Family
+	$base_font-family: 'Roboto', sans-serif;
+	$heading_font-family: 'Oswald', sans-serif;
+	$fa_font-family:  'FontAwesome';
+//  - Font Colors
+	$base_fontColor: #212121;
+	$sub_fontColor: #ffffff; 
+	$heading_fontColor: #1c1c1c;
+	$title_1_fontColor: #3BA1DD;
+//  - Bullet color
+	$fa_bullets_check_color: #449d44;
+//  - Button BGColor
+	$btnbgcolor: #2196F3;
+	$modalbtnbgcolor: #F9C81C;
+// iii. functions
+// ************************
+	@function em($pixels, $context: 16) {
+	  	@return #{$pixels/$context}em;
+	}
+	@mixin border-radius($box) {
+		@include prefixer(border-radius, $box, webkit moz spec);
+	}
+	@mixin button_style($btn_color) {
+		text-decoration: none;
+		font-family: $heading_font-family;
+		white-space: normal;
+		font-weight: 700;
+		font-size: 1.5em;
+		padding: 15px 0;
+		width: 100%;
+		@include mq($from: mobile,$until:tablet){
+		} 
+		border: none;
+		position: relative;
+	    @include transition(all 300ms ease);
+	    @include box-shadow(0 4px darken($btn_color,25%));
+		&:after {
+			content: "";
+			position: absolute;
+			z-index: -1;
+			@include transition(all 300ms ease);
+		}
+		&:hover {
+			top: 2px;
+			@include box-shadow(0 2px darken($btn_color,20%));
+		}
+		&:active {
+			top: 6px;
+			border: none;
+			@include box-shadow(0 0 darken($btn_color,15%));
+		}
+	}
+
+// Font 
+// ========================
+	html {
+		font-size: 100%;
+	}
+	body {
+		font-family: $base_font-family;
+		font-size: 16px;
+		color: lighten($base_fontColor, 20%);
+		font-kerning: normal;
+		line-height: 1.618;
+	}
+	p {
+		margin-bottom: 15px;
+	}
+	p,ul {
+		font-size: em(19); 
+	}
+	.module {
+		& 	a {
+			text-decoration: underline;
+		}
+	}
+	@for $heading from 1 through 6 {
+		h#{$heading},.h#{$heading} {
+			font-family: $heading_font-family;
+			line-height: 1.30;
+			margin-bottom: 3%;
+		}
+	}
+	h1 {
+		font-weight: 800;
+		font-size: 3em;
+	}
+	// I dont like the way I have done this and I have to revist this in the future. 
+	$heading_sizes: ( 2: 30, 3: 28, 4: 24, 5: 18, 6: 16 );
+	@each $heading, $value in $heading_sizes {
+		h#{$heading}, .h#{$heading} {
+			font-size: em($value);
+			font-weight: 700;
+		}
+	}
+	// font styles
+	.text-underline {
+		text-decoration: underline;
+	}
+// 2. Layout
+// =======================
+	body {
+	    overflow-x: hidden;
+	}
+	section,div,body {
+		position: relative;
+	}
+	.module {
+		padding-top: 2.5%;
+		padding-bottom: 2.5%;
+		min-height: 50vh;
+	}
+// title section  
+	section.title { 
+		background: $title_bgcolor;
+		background-image: $image_titlebg; 
+		background-repeat: repeat;
+		background-attachment: fixed;
+		& div.title-image-overlay {
+			background: $title-image-overlay;
+		}
+	}
+// main content section 
+	section.content {
+		background-color: $secondary_bgcolor;
+	}
+// portfolio section 
+	section.portfolio {
+		background-color: $base_bgcolor;
+	}
+//  blockquote 
+	blockquote {
+		position: relative;
+		margin-top: em(25);
+		margin-bottom: em(25);
+		& p::before {
+			font-family: $fa_font-family; 
+			content: "\f10d \00a0";
+			font-size: em(31.5);
+		    position: absolute;
+		    top: em(-3px);
+		    left: em(10px);
+		    color: lighten($base_fontColor, 75%)
+		}
+		& p {
+			padding-left: em(42.5px);
+			text-align: justify;
+		}
+		& p::after {
+			font-family: $fa_font-family; 
+			content: "\00a0 \f10e";
+			font-size: em(25.5);
+			position: absolute;
+			padding-left: em(5px);
+		    color: lighten($base_fontColor, 75%)
+		}
+		& footer { // since I have used "footer" tag for the sites footer background. 
+			background: rgba($base_bgcolor, 0.0); 
+		}
+	}
+// Unordered & Ordered Lists
+// =========================
+	ul.fa_bullets {
+		margin-bottom: 4.5%;
+	}
+	ul.fa_bullets li {
+		list-style: none;
+		margin-top: 1.5%;
+		margin-bottom: 1.5%;
+		margin-left: 3.5%;
+		@include mq($from: mobile, $until: tablet) {
+			font-size: em(18px);
+		}
+	}
+
+	ul.fa_bullets > li:before {
+	    margin-top: -4.25%;
+	    position: absolute;
+	    bottom: 2.05%;
+	    font-size: em(40);
+		font-family: $fa_font-family;		
+	}
+
+	ul.fa_bullets.icon--check > li:before {
+			content: '\f00c';
+			color: $fa_bullets_check_color;
+	}
+
+	ul.fa_bullets.icon--circled-check > li:before {
+			content: '\f058';
+			color: $fa_bullets_check_color;
+	}
+
+	ol.big-number {
+		margin-top: 2.5%;
+		counter-reset: big-numbers;
+		list-style: none;
+		& li {
+			margin-bottom: 5.5%;
+			margin-left: 3.55%;
+			&:last-child {
+				margin-bottom: 0.5%;
+			}
+		}
+		& li:before {
+			content: counter(big-numbers) ". ";
+			counter-increment: big-numbers;
+			font-size: em(38);
+			font-weight: 700;
+			position: absolute;
+			left: 4.0%;
+			margin-top: -1.7%;
+		}
+	}
+// Footer 
+// =========================
+	footer {
+		font-size: em(14px);
+		padding-top: 3%;
+		padding-bottom: 2%;
+		color: $sub_fontColor;
+		background: $base_bgcolor;
+		& ul {
+			list-style: none;
+			padding-left: 0;
+			padding-right: 0;
+		}
+		& ul li {
+			display: inline;
+			padding-left: 2%;
+			padding-right: 1%;
+			border-left: 1px solid #fff;
+		}
+		& ul li:first-child{
+			padding-left: 0%;
+			border-left: none;
+		}
+		& li a {
+			color: $sub_fontColor;
+		}
+		& p {
+			text-align: justify;
+			@include mq($from: mobile, $until: tablet) {
+			    font-size: 14px;
+			}
+		}
+
+	}
+// Modals 
+// =========================
+	.modal-footer, .modal-header {
+		border-top: none;
+		border-bottom: none;
+	}
+	.modal-body {
+		padding: 1.5% 5.5% 4.5% 5.5%; 
+		& .btn-lg {
+		    font-size: em(20px);
+		    font-weight: 700;
+		}
+		& p {
+			margin-top: 4.5%;
+		}
+		& h1,h2,h3,h4,h5,h6 {
+			margin-top: 5.5%;
+			margin-bottom: 3.5%;
+		}
+		& h2 {
+			font-size: em(27px);
+		}
+		& .btn {
+			color: $base_fontColor;
+			@include button_style($modalbtnbgcolor);
+			background: $modalbtnbgcolor;
+		}
+		& form.modal_signup_form {
+			& label {
+				font-size: em(20px);
+			}
+			& .help-block {
+			    font-weight: 700;
+			    text-transform: uppercase;
+			    & ul.list-unstyled {
+			    	font-size: em(16px);
+			    }
+			}
+		}
+
+	}
+	.close {
+		opacity: 1;
+	}
+	.modal-backdrop.in {
+	    opacity: .90;
+	    filter: alpha(opacity=90);
+	}
+// Title Section 
+// =========================
+	section.title.module {
+		min-height: 15vh;
+		padding-top: 0;
+		padding-bottom: 0;
+		& div.title-image-overlay {
+			background: $title-image-overlay;
+			padding-top: 3rem;
+			padding-bottom: 3rem;
+		}
+		@include mq($from: mobile, $until: tablet){
+			& h1 {
+	    		font-size: em(28px);
+	    		text-align: center;
+	    	}
+	    	& h3 {
+	    		font-size: em(20px);
+	    	}
+		}
+	    color: $sub_fontColor;
+	    border-color: #426aa2;
+	    margin: none;
+		&.arrow_down:before {
+		    top: 100%;
+		    border-top-color: inherit;
+		    border-width: 18px 30px 0;
+		}
+		&.arrow_down:before {
+		    left: 50%;
+		    -webkit-transform: translateX(-50%);
+		    transform: translateX(-50%);
+		}
+		&:before {
+		    content: "";
+		    height: 0;
+		    width: 0;
+		    position: absolute;
+		    pointer-events: none;
+		    z-index: 1;
+		    border: solid transparent;
+		    border-color: transparent;
+		}
+		& .btn_pos {
+			margin-top: 0;
+		}
+		& .btn.btn-primary {
+			@include button_style($btn-primary-bg);
+		}		
+		& .btn.btn-success {
+			@include button_style($btn-success-bg);
+			margin-top: 0.25em;
+		}
+	}
+
+// Content Section
+// =========================
+	section.content {
+		&.typage {
+			h1 {
+				font-size: 4rem;
+			}
+		}
+		& p.hero-subheadline1--normalfont {
+			font-size: 3em;
+		}
+		& p.hero-subheadline2--normalfont {
+			font-size: 1.5em;
+		}
+		& h2.hero-headline {
+			font-size: 4rem;
+			margin-top: 1.25em;
+			margin-bottom: 1.25em;
+		}
+		&.bg-content-blue {
+			background-color: #3ba1dd;
+		}
+		& div.border-top-btm {
+			border-top: #eaeaea 2px solid; 
+			border-bottom: #eaeaea 2px solid;
+			margin-bottom: 2.0em;
+		} 
+		& div.border {
+			border: #eaeaea 2px solid; 
+			border-radius: 3px;
+			margin-top: 2.0em;
+			margin-bottom: 2.0em;
+			padding: 3rem;
+			@include mq($from: mobile, $until: desktop){
+				padding: 1.5rem;
+			}
+		}
+		div.border.bg-white,div.border-top-btm.bg-white {
+			background: $secondary_bgcolor;
+		}
+		& h1.main-title {
+			color: $secondary_bgcolor;
+			font-size: 5.25rem;
+			@include mq($from: mobile, $until: desktop){
+				font-size: 3.25rem;
+			}
+		}
+		& h2 {
+			@include mq($from: mobile, $until: desktop){
+				font-size: em(22px);
+			}
+		}
+		& h2.title-1 {
+			color: $title_1_fontColor;
+			font-weight: 900;
+		}
+		& h2.h1 {
+			font-size: 3.35rem;
+			@include mq($from: mobile, $until: desktop){
+				text-align: center;
+				font-size: 2.85rem;
+				margin-top: 0;
+				margin-bottom: 3rem;
+			}
+		}
+		& img.img-responsive {
+			@include mq($from: mobile, $until: desktop){
+				max-width: 280px;
+			    margin: auto;
+			    margin-bottom: 20px;
+			}
+		}
+	    div.well {
+			p {
+			    margin: 10px 0;
+			}
+	    }
+		& h4 {
+			@include mq($from: mobile, $until: desktop){
+				font-size: em(21px);
+			}
+		}
+		& .btn.btn-lg {
+    		font-size: em(35px);
+		}
+		& .btn.btn-warning {
+			@include button_style($modalbtnbgcolor);
+			background: $modalbtnbgcolor;
+			color: $base_fontColor;
+		}
+		& .btn.btn-primary {
+			@include button_style($btn-primary-bg);
+		}
+		& .btn.btn-success {
+			@include button_style($btn-success-bg);
+			margin-top: 1em;
+			font-size: 0.75em;
+		}
+		& form.signup_form {
+			& .help-block {
+			    font-weight: 700;
+			    text-transform: uppercase;
+			}
+		}
+	}
+
+// Webinar Section
+// =========================
+	.webinar {
+		& h3 {
+			font-size: em(21px);
+			color: lighten($base_fontColor, 20%);
+			margin: 3%;
+			padding: 0;
+			@include mq($from: mobile, $until: tablet){
+				& {
+		    		font-size: em(18px);
+		    		text-align: center;
+		    	}
+			} 
+		}
+		& .fa-lg.fa-clock-o {
+			font-size: 1.65em;
+		}
+		& a.btn, button.btn {
+	    	border: 3px solid $btnbgcolor;
+	    	background: $btnbgcolor;
+			color: $sub_fontColor;
+		    &:hover, &:active {
+		    	border: 3px solid #4caf50;
+		    	background: #4caf50;
+		    }
+		    &:hover:after, &:active:after {
+		    	border: 3px solid #4caf50;
+		    	background: #4caf50;
+		    }
+		}
+		&.well {
+			background: $secondary_bgcolor;
+		}
+	    & a.btn, button.btn {
+	    	text-decoration: none;
+	    	display: block;
+	    	padding: 0 0 0 4%;
+	    	transform: translateY(0px);
+	    	border-radius: 2px;
+		    font-size: em(20px);    
+		    font-weight: 700;
+		    cursor: pointer;
+		    white-space: normal;
+			outline: none;
+			position: relative;
+		    transition: all 300ms;
+		    &:hover, &:active {
+				transition-delay: 0.10s;
+		    	-webkit-transition-delay: 0.10s;
+		    	font-weight: 700;
+		    }
+	    }
+	}
+// Break Section
+// =========================
+	section.content.break.module {
+	    min-height: 20vh;
+		background: #eeeeee;
+		&.break-primary {
+			background-color: #348bff;
+			color: $sub_fontColor; 
+		}
+		& .btn {
+			margin-top: 0em;
+			max-width: 50%;
+		}
+	}   
+// iv. Miscellaneous
+// ************************
+.center-block {
+	float: none;
+	margin: auto;
+}
+.help-block.with-errors ul li {
+	font-weight: 700;
+}
+.shareWidget {
+	text-align: center;
+	& a {
+		text-decoration: none;
+	} 
+}
+section.coreg {
+	h1 {
+	    font-family: "Roboto",sans-serif;
+	    line-height: 1.30;
+	    margin-bottom: 3%;
+	    font-size: 4.0rem;
+	}
+	min-height: 100vh;
+	div.coreg_iframe {
+		& iframe {
+			width: 100%;
+			border: none;
+		}
+	}
+}
+.disclaimer {
+	font-size: em(14px);
+}
+.bonus {
+	font-size: em(40px);
+}
+.capthca_form {
+	width: 305px; 
+	margin: auto;
+}

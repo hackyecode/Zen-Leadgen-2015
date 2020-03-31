@@ -1,0 +1,29 @@
+<?php 
+	// Load assets
+	require 'functions/functions.php';
+	// Declared Variables
+	$status_message = null;
+
+	if($_POST) {
+		$request_input_fields = array('email','sid','submit_form');
+		foreach ($request_input_fields as $input_field_key) {
+			${$input_field_key} = $_POST["{$input_field_key}"];
+		}
+	} 
+
+	$email = (isset($email) ? urldecode(trim(filter_var($email,FILTER_SANITIZE_EMAIL))) : null);
+	$spamtrap = (isset($submit_form) ? filter_var($submit_form,FILTER_SANITIZE_ENCODED) : null);
+ 
+	if (empty($spamtrap) && !empty($_POST)) {
+		if (domain_exists($email,"MX") == false){
+			$status_message = "ERROR:INVALIDEMAIL";
+		}		
+
+		if($status_message == null) {
+
+		}
+	} else {
+			$status_message = "ERROR: NULL FORM. PLEASE TRY AGAIN!"; 
+	}
+
+	exit($status_message);

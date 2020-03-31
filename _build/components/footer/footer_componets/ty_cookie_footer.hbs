@@ -1,0 +1,15 @@
+        <?php 
+        	$submitted = (isset($_GET['submit']) ? $_GET['submit'] : null);
+        	$redirect = $_COOKIE['tda_direct'];
+        	if (isset($redirect) && $submitted === "success") {
+        		echo "<img src=\"http://thedarwinhub.com/track/?trackcook=yes\" />";
+        	} else {
+        		header("Location: /");
+        	}
+        ?>
+        <script type="text/javascript">
+            <?php echo "var theredirect = \"$redirect\";\n"; ?>
+            setInterval(function() {
+                window.location.replace(theredirect);
+            },1000);
+        </script>

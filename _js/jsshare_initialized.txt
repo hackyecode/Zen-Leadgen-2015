@@ -1,0 +1,13 @@
+$("#share").jsSocials({    
+	shareIn: "popup",
+	showCount: false,
+	// url: currentdomain,
+	text: "Free Training For Stock and Options Traders Reveals \"The Crossover Method\" - ", 
+    shares: [
+    	"email",
+    	{share: "twitter",hashtags: "Stock,Options"}, 
+    	"facebook", 
+    	"googleplus", 
+    	"linkedin"
+    ]
+}); 

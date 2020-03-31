@@ -1,0 +1,14 @@
+<?php 
+	$dynamic = false;
+	$typage = 'http://wealthcreationinvesting.com/monthly-cash-flow/thank-you.php';
+	if ($_GET && $dynamic === true) {
+		$coreg_fields = array('aid','caid');
+		foreach ($coreg_fields as $coreg_field_key) {
+			${$coreg_field_key} = $_GET["{$coreg_field_key}"];
+		}	
+	} else {
+		$coreg_fields = array('aid' => 300,'caid' => 1);
+	}
+
+	echo "<iframe id=\"special_offers\" src=\"http://thedarwinhub.com/track/display.php?id={$coreg_fields['aid']}&catid={$coreg_fields['caid']}&redirect={$typage}\"></iframe>";
+?>

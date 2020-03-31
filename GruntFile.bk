@@ -1,0 +1,145 @@
+module.exports = function(grunt) {
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        tinypng: {
+            options: {
+                apiKey: '38_9e5XLkopmjFIH3wqIyenDt6SKJ_xM',
+                summarize: true,
+                showProgress: true,
+                stopOnImageError: true
+            },
+            compresspngimage: {
+                expand: true,
+                src: '_img/*.png',
+                dest: '' // After the image is compress it returns back to the folder then the copy task will take it to the correct build folder.
+            } 
+        },
+        assemble: {
+            options: {
+                layoutdir: '_build/template/',
+                layout: "*.hbs",
+                flatten: true,
+                partials: '_build/components/**/*.hbs',
+                ext: '.php'
+            },
+            landing_page: {
+              options: {
+                layout: 'main.hbs',
+              },
+              files: {
+                  'compiled_assets/': ['_build/pages/index.hbs']
+              }
+            },
+            ty_page: {
+                options: {
+                    layout: 'ty_page.hbs',
+                },                    
+                files: {
+                    'compiled_assets/': ['_build/pages/thank-you.hbs']
+                } 
+            },
+            coreg_page: {
+                options: {
+                    layout: 'wait_page.hbs',
+                },                    
+                files: {
+                    'compiled_assets/': ['_build/pages/wait.hbs']
+                } 
+            },
+            php_builds: {
+                options: {
+                    layout: 'php_base.hbs',
+                },                    
+                files: {
+                    'compiled_assets/assets/inc/': ['_build/php_init/process.hbs']
+                } 
+            }  
+        },
+        sass: {
+            dist: {
+                options: {
+                    style: 'compressed',
+                    sourcemap: 'none'
+                },
+                files: {
+                    'compiled_assets/assets/css/style.css': '_scss/style.scss'
+                }
+            }
+        },
+        concat: {
+            options: {
+                sourceMap: false,
+            },
+            js: {
+                src: ['bower_components/jquery/dist/jquery.min.js','bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js','bower_components/bootstrap-validator/dist/validator.min.js','_js/**/*.js'],
+                dest:'compiled_assets/assets/js/scripts.min.js'
+            }
+        },
+        copy: {
+            images: {
+                files: [{
+                    expand: true,
+                    cwd: '_img/',
+                    src: ['**/*.{png,jpg,svg,PNG,JPG}'],
+                    dest: 'compiled_assets/assets/img/'
+                }]
+            },
+            php_vendor: {
+                files: [{
+                    expand: true,
+                    cwd: '_php_vendor_classes',
+                    src: ['**/*'],
+                    dest: 'compiled_assets/assets/inc/'
+                }]
+            },
+            php: {
+                files: [{
+                    expand: true,
+                    cwd: '_php',
+                    src: ['**/*.{php,ini,html,txt}'],
+                    dest: 'compiled_assets/assets/inc/'
+                }]
+            }
+        },
+        clean: {
+            all: ['compiled_assets/assets/inc/*','compiled_assets/*.html','compiled_assets/assets/js/*.js','compiled_assets/assets/img/*']
+        },
+        watch: {
+            sass: {
+                files: '_scss/*.scss',
+                tasks: ['sass:dist']
+            },
+            js: {
+                files:  ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js', '_js/*.js'],
+                tasks: ['concat:js']
+            },
+            copy: {
+                files: ['_img/*','_php/*'],
+                tasks: ['copy:images','copy:php']
+            },
+            assemble: {
+                files: ['_build/layouts/main.hbs', '_build/pages/*.hbs','_build/components/**/*.hbs'],
+                tasks: ['assemble']
+            }
+
+        },
+        uglify: {
+            minify_js: {
+                files: {
+                    'compiled_assets/assets/js/scripts.min.js' : ['compiled_assets/assets/js/scripts.min.js']
+                }
+            }
+        }
+    });
+    grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-compress');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('assemble');
+    grunt.loadNpmTasks('grunt-tinypng');
+    grunt.registerTask('default', ['clean','assemble','concat','uglify','sass','copy','watch']);
+    grunt.registerTask('tinypngfire',['tinypng']);
+}; 

@@ -1,0 +1,7 @@
+<?php 
+    date_default_timezone_set("America/New_York");
+    require 'assets/inc/functions/functions.php';
+    $theredirect = str_replace("/wait.php","/", curPageURL());
+    $theredirect = explode("?", $theredirect);
+    $typage = $theredirect[0]."thank-you.php";
+?>

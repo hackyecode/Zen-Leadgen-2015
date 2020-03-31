@@ -1,0 +1,44 @@
+<section id="content_section" class="content module">
+		<div class="container">
+			<div class="page-header">
+				<div class="row">
+					<div class="col-md-7 center-block">
+						<h1 class="text-center text-danger h2">There seems to be an issue with your request and we need to verify a few things.</h1>
+						<h4 class="text-center">Please Fill Out The Form Below.</h4>
+	              	</div> 
+				</div>
+			</div> 
+			<div class="row"> 
+				<div class="col-md-5 center-block">
+	                <form accept-charset="UTF-8" action="assets/inc/process.php" method="post" role="form" id="signup_form" data-toggle="validator" class="signup_form">
+	                  <?php foreach ($custom_input as $custom_inputKey => $custom_inputValue) {
+	                  	echo "<input type=\"hidden\" name=\"{$custom_inputKey}\" value=\"{$custom_inputValue}\" />";
+	                  } ?>
+	                  <div class="firstname_field form-group">
+	                      <label for="FirstName">First Name:</label>
+	                      <input id="FirstName" class="form-control" type="text" placeholder="Please Enter Your First Name." name="firstname" maxlength="128" data-error="Please Enter Your First Name" required="required" /> 
+	                      <div class="help-block with-errors"></div>
+	                  </div><!-- form-control -->
+	                  <div class="email_field form-group">
+	                      <label for="Email">Email:</label>
+	                      <input id="Email" class="form-control" type="email" placeholder="Please Enter Your Email. ex. user123@example.com" name="email" data-error="Please Enter A Valid Email ex. user123@example.com" required="required" />
+	                      <div class="help-block with-errors"></div>
+	                  </div><!-- form-control -->
+	                  <div class="form-group">
+	                  	<div class="capthca_form">
+		                  <?php 
+							echo "<div class=\"g-recaptcha\" data-sitekey=\"6Lc2mRwTAAAAAAb1m7PO1CGTFwEdFJ_tH6HT4i1F\"></div>";
+							echo "<script src='https://www.google.com/recaptcha/api.js'></script>";
+		                  ?>
+	                  	</div>
+	                  </div>                  
+	                  <div class="form-group">
+	                      <button id="submitbutton" class="btn btn-lg btn-block btn-warning h5" type="submit" name="submit" value="submit">SUBMIT</button>
+	                  </div><!-- form-control -->
+	                  <p class="disclaimer text-center"><i class="fa fa-lock fa-lg"></i>&nbsp;&nbsp;Your information is secure and your privacy is protected.</p>
+	                  <div id="statuscontrol" class="text-center alert alert-danger text-capitalize hidden"></div>                       
+	                </form>
+				</div>
+			</div>
+		</div>
+	</section>

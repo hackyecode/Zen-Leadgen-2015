@@ -1,0 +1,15 @@
+<?php
+    date_default_timezone_set("America/New_York");
+    require 'assets/inc/functions/functions.php';
+
+	if ($_GET) {
+		$request_input_fields = array('sid');
+		foreach ($request_input_fields as $input_field_key) {
+			${$input_field_key} = $_GET["{$input_field_key}"];
+		}
+	}
+	$custom_input = array(
+		'sid' => $sid,
+		'submit_form' => null
+	);
+?>

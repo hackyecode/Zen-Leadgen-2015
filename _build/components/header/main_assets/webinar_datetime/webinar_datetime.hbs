@@ -1,0 +1,16 @@
+<?php
+    date_default_timezone_set("America/New_York");
+    require 'assets/inc/functions/functions.php';
+    $domain_name = str_replace("www.", "", $_SERVER['SERVER_NAME']);
+    $ty_page = "http://".$domain_name."/thank-you-php";
+    setcookie("tda_direct",$ty_page,time()+3600);
+    $sid = (isset($_GET['sid']) ? $_GET['sid'] : "TECH TEST" );
+    $setWebinarDateString = "09/22/2016 19:00:00";
+    $webinar_date = output_datetime(null,"monDayYearTime",$setWebinarDateString);
+    $cta_webinar_date = output_datetime(null,"dayMonDateSuffix",$setWebinarDateString);
+    $cta_webinar_time = output_datetime(null,"timeMerTZ",$setWebinarDateString);
+    $custom_input = array(
+        'errorrequest' => "send",
+        'sid'=> $sid
+    );
+?>

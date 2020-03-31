@@ -1,0 +1,41 @@
+<!-- Signup Form -->
+        <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="claimyourseatnow">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times-circle"></i></span></button>
+              </div>
+              <div class="modal-body">
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                    <span>50% Complete</span>
+                  </div>
+                </div>
+                <h4 class="modal-title text-center text-capitalize" id="claimyourseatnow">Enter Your Information Below To Reserve Your Seat For This Free Training Event.</h4>
+                <form accept-charset="UTF-8" action="assets/process.php" method="post" role="form" id="signup_form" data-toggle="validator" class="modal_signup_form">
+
+                  <div class="form-group">
+                      <label for="FirstName">First Name:</label>
+                      <input id="FirstName" class="form-control" type="text" placeholder="Please Enter Your First Name." name="firstname" maxlength="35" data-error="Please Enter Your First Name" required />
+                      <div class="help-block with-errors"></div>
+                  </div><!-- form-control -->
+                  <div class="form-group">
+                      <label for="Email">Email:</label>
+                      <input id="Email" class="form-control" type="email" placeholder="Please Enter Your Email. ex. user123@example.com" name="email" data-error="Please Enter A Valid Email ex. user123@example.com" required />
+                      <div class="help-block with-errors"></div>
+                  </div><!-- form-control -->                  
+                  <div class="form-group">
+                      <label for="Phone">Phone (Optional):</label>
+                      <input id="Phone" class="form-control" type="tel" placeholder="Please Enter Your Phone Number To Get Alert. ex. 123-555-5555" pattern="\d{3}[\-]\d{3}[\-]\d{4}" name="phone" data-error="Please enter a valid phone number ex. 123-555-5555" />
+                      <div class="help-block with-errors"></div>
+                  </div><!-- form-control -->
+                  <div class="form-group">
+                      <button class="btn btn-lg btn-block btn-warning h5" type="submit" name="submit" value="submit">Claim Your Seat Now</button>
+                  </div><!-- form-control -->
+                  <p class="disclaimer"><i class="fa fa-lock fa-lg"></i>&nbsp;&nbsp;Your information is secure and your privacy is protected. By opting in you agree to receive emails from each of the educators below. Opt-out any time, we hate spam</p>                       
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>

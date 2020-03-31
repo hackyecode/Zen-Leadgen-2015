@@ -1,0 +1,36 @@
+        <script type="text/javascript">           
+            /*
+             References for the current format of flipclock.js
+                 * http://flipclockjs.com/
+                 * http://stackoverflow.com/questions/36206260/how-to-set-date-always-to-eastern-time-regardless-of-users-time-zone
+                 * http://stackoverflow.com/questions/24786045/count-down-from-a-particular-date-using-flipclock-js
+            */
+            $(document).ready(function() {
+              <?php echo "var set_date = new Date(\"$webinar_date\");\n"; ?>
+              var today_date = new Date();
+
+              set_date.setTime(set_date.getTime() + (set_date.getTimezoneOffset()*60*1000));
+              var est_set_date = new Date(set_date.getTime() + (-240*60*1000));
+              console.log("Today's Date: ",today_date);
+              console.log("Webinar Date EDT: ",est_set_date);
+
+              var countdowndate = (est_set_date/1000) - (today_date.getTime()/1000);
+              var clock = $('#webinar-countdown').FlipClock({
+                    clockFace: 'DailyCounter',
+                    autoStart: false,
+                    callbacks: {
+                        stop: function() {
+                            console.log('The clock has stopped!');
+                        }
+                    }
+                });
+                        
+                clock.setTime(countdowndate);
+                clock.setCountdown(true);
+                clock.start();
+
+                $('ul.flip li a').click(function(){
+                    return false;                
+                });              
+            });
+        </script>

@@ -1,0 +1,8 @@
+{
+    "require": {
+        "google/recaptcha": "^1.1",
+        "league/oauth2-client": "^1.4",
+        "verot/class.upload.php": "^0.33.0",
+        "joshcam/mysqli-database-class": "dev-master"
+    }
+}

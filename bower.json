@@ -1,0 +1,28 @@
+{
+  "name": "zen_landing_pages",
+  "version": "0.2.5",
+  "authors": [
+    "mobiuszero <mobiuszero@mobiuszero.com>"
+  ],
+  "description": "Landing pages for Zen Optins and Landings",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap-sass-official": "3.3.5",
+    "font-awesome": "fontawesome#~4.4.0",
+    "jssocials": "^1.4.0"
+  },
+  "private": true,
+  "devDependencies": {
+    "sass-web-fonts": "~1.1.0",
+    "waypoints": "~4.0.0"
+  },
+  "main": "",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
